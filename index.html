@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +14,11 @@
         .tabs-container {
             position: relative;
             margin-bottom: 10px;
+            display: none; /* Hidden by default */
+        }
+
+        .tabs-container.visible {
+            display: block; /* Show when visible class is added */
         }
 
         .tabs-scroll {
@@ -39,30 +43,6 @@
             margin: 2px;
         }
 
-
-
-
-
-        
-
-.tabs-container {
-  text-align: center;
-}
-
-.tab-row {
-  margin-bottom: 10px;
-}
-
-.tab {
-  margin: 4px;
-}
-
-
-
-
-
-        
-        
         .tab.active {
             background: linear-gradient(90deg, var(--gold1), var(--gold2));
             color: #0b0b0d;
@@ -119,17 +99,6 @@
                 gap: 5px;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
 
         :root {
             --bg: #0b0b0d;
@@ -270,58 +239,133 @@
             margin-bottom: 15px;
         }
 
+        /* Veg/Non-Veg Buttons */
         .veg-nonveg {
             display: flex;
             justify-content: center;
             gap: 30px;
             margin-top: 20px;
+            align-items: center;
         }
 
-        .veg,
-        .nonveg {
+        .veg-btn,
+        .nonveg-btn {
             display: flex;
             align-items: center;
             gap: 8px;
             font-weight: 500;
-            padding: 8px 16px;
+            padding: 12px 24px;
             border-radius: 30px;
             transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            font-size: 18px;
         }
 
-        .veg {
+        .veg-btn {
             color: #2e7d32;
             background: rgba(46, 125, 50, 0.1);
         }
 
-        .nonveg {
+        .nonveg-btn {
             color: #c62828;
             background: rgba(198, 40, 40, 0.1);
         }
 
-        .veg:hover,
-        .nonveg:hover {
+        .veg-btn:hover,
+        .nonveg-btn:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow);
         }
 
+        .veg-btn.active {
+            border-color: #2e7d32;
+            background: rgba(46, 125, 50, 0.2);
+            transform: scale(1.05);
+        }
+
+        .nonveg-btn.active {
+            border-color: #c62828;
+            background: rgba(198, 40, 40, 0.2);
+            transform: scale(1.05);
+        }
+
         .symbol {
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: inline-block;
         }
 
-        .veg .symbol {
+        .veg-btn .symbol {
             background: #4caf50;
             border: 2px solid #2e7d32;
         }
 
-        .nonveg .symbol {
+        .nonveg-btn .symbol {
             background: #f44336;
             border: 2px solid #c62828;
         }
 
-        /* Location Link Section - Added at bottom */
+        .reset-filter-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--muted);
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            margin-left: 15px;
+        }
+
+        .reset-filter-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        /* Welcome Message - Shown when no category selected */
+        .welcome-message {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            margin: 20px 0;
+        }
+
+        .welcome-message h2 {
+            font-family: var(--ff-heading);
+            color: var(--gold2);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .welcome-message p {
+            color: var(--muted);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .welcome-message .instruction {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50px;
+        }
+
+        /* Location Link Section */
         .location-link-section {
             background: rgba(255, 255, 255, 0.03);
             border-radius: 12px;
@@ -450,6 +494,11 @@
         .tabs-container {
             position: relative;
             margin-bottom: 10px;
+            display: none; /* Hidden by default */
+        }
+
+        .tabs-container.visible {
+            display: block; /* Show when visible class is added */
         }
 
         .tabs-scroll {
@@ -1142,25 +1191,30 @@
 
 <body>
     <div class="container">
-        <!-- Cafe Header - Original Style -->
+        <!-- Cafe Header -->
         <div class="cafe-header">
-<img src="logo.png" alt="Logo" style="width:400px; height:auto; display:block; margin:0 auto;">
+            <img src="logo.png" alt="Logo" style="width:400px; height:auto; display:block; margin:0 auto;">
             <div class="cafe-name">SUNSET SPOT RESTAURANT</div>
             <div class="cafe-subtitle">location:</div>
             <div class="location-info">
                 <div class="location-text">At saralpool, post .saral ,tal.alibag, dist.raigad Pincode 402201</div>
                 <div class="address"></div>
-                            <div class="cafe-subtitle"></div>
+                <div class="cafe-subtitle"></div>
                 <div class="mobile-numbers">Mo no. +91 99604 65169</div>
             </div>
+            <!-- Veg/Non-Veg Buttons with Reset -->
             <div class="veg-nonveg">
-                <div class="veg">
+                <div class="veg-btn" id="vegBtn" onclick="filterByVegNonVeg('veg')">
                     <span class="symbol"></span>
                     <span>VEG</span>
                 </div>
-                <div class="nonveg">
+                <div class="nonveg-btn" id="nonVegBtn" onclick="filterByVegNonVeg('nonveg')">
                     <span class="symbol"></span>
                     <span>NON VEG</span>
+                </div>
+                <div class="reset-filter-btn" id="resetFilterBtn" onclick="resetVegNonVegFilter()" style="display: none;">
+                    <span>✕</span>
+                    <span>Reset</span>
                 </div>
             </div>
         </div>
@@ -1179,54 +1233,37 @@
                         <input id="search" placeholder="Search dishes, ingredients..." />
                     </div>
 
-
-
-   <div class="tabs-scroll">
-     
-<button class="tab active" data-cat="all">All</button>
-<button class="tab" data-cat="BREAKFAST">Breakfast</button>
-<button class="tab" data-cat="VEG">Veg</button>
-<button class="tab" data-cat="NON_VEG">Non Veg</button>
-<button class="tab" data-cat="TANDOORI">Tandoori</button>
-<button class="tab" data-cat="TANDOOR_STARTER_VEG">Tandoor Starter Veg</button>
-<button class="tab" data-cat="KUCH_KHEEMA_HO_JAYE">Kuch Kheema Ho Jaye</button>
-<button class="tab" data-cat="EGG_ITEMS">Egg Items</button>
-<button class="tab" data-cat="TANDOOR_STARTER_NON_VEG">Tandoor Starter Non Veg</button>
-<button class="tab" data-cat="SOUP_VEG">Soup Veg</button>
-<button class="tab" data-cat="STARTER_CHINESE_VEG">Starter Chinese Veg</button>
-<button class="tab" data-cat="SOUP_NON_VEG">Soup Non Veg</button>
-<button class="tab" data-cat="STARTER_CHINESE_NON_VEG">Starter Chinese Non Veg</button>
-<button class="tab" data-cat="MUTTON_KA_KHAJANA">Mutton Ka Khajana</button>
-<button class="tab" data-cat="FISH_KA_STARTER">Fish Ka Starter</button>
-<button class="tab" data-cat="FISH_CURRY_MASALA">Fish Curry Masala</button>
-<button class="tab" data-cat="THALI_KI_TARAF">Thali Ki Taraf</button>
-<button class="tab" data-cat="NON_VEG_GRAVY">Non Veg Gravy</button>
-<button class="tab" data-cat="VEG_GRAVY">Veg Gravy</button>
-<button class="tab" data-cat="ROTI_BASKET">Roti Basket</button>
-<button class="tab" data-cat="WATER_COLD_DRINKS">Water & Cold Drinks</button>
-<button class="tab" data-cat="KUCH_MEETHA_HO_JAYE">Kuch Meetha Ho Jaye</button>
-<button class="tab" data-cat="BIRYANI_KA_SWAAD">Biryani Ka Swaad</button>
-<button class="tab" data-cat="NON_VEG_BIRYANI">Non Veg Biryani</button>
-<button class="tab" data-cat="DAL_KI_DUNIYA">Dal Ki Duniya</button>
-<button class="tab" data-cat="RICE_ITEMS">Rice Items</button>
-<button class="tab" data-cat="KHANE_KE_SATH">Khane Ke Sath</button>
-<button class="tab" data-cat="CHINESE_VEG_RICE">Chinese Veg Rice</button>
-<button class="tab" data-cat="CHINESE_VEG_NOODLES">Chinese Veg Noodles</button>
-<button class="tab" data-cat="CHINESE_NON_VEG_RICE">Chinese Non Veg Rice</button>
-<button class="tab" data-cat="CHINESE_NON_VEG_NOODLES">Chinese Non Veg Noodles</button>
-
-       
+                    <!-- Category Tabs - Hidden by default -->
+                    <div class="tabs-container" id="categoryTabsContainer">
+                        <div class="tabs-scroll" id="categoryTabs">
+                            <!-- Tabs will be dynamically generated by JavaScript -->
+                        </div>
                     </div>
-                    
                 </div>
             </div>
 
-            <section class="menu-grid" id="menuGrid">
-                <!-- Cards injected by JS -->
+            <!-- Welcome Message - Shown when no category selected -->
+            <div id="welcomeMessage" class="welcome-message">
+                <h2>🍽️ Welcome to Sunset Spot! 🍽️</h2>
+                <p>Please select your preference to view the menu:</p>
+                <div class="instruction">
+                    <div class="instruction-item">
+                        <span class="symbol" style="background: #4caf50; width: 20px; height: 20px;"></span>
+                        <span>Click VEG for vegetarian options</span>
+                    </div>
+                    <div class="instruction-item">
+                        <span class="symbol" style="background: #f44336; width: 20px; height: 20px;"></span>
+                        <span>Click NON VEG for non-vegetarian options</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="menu-grid" id="menuGrid" style="display: none;">
+                <!-- Cards injected by JS - Hidden initially -->
             </section>
         </main>
 
-        <!-- Location Link Section - Added at bottom -->
+        <!-- Location Link Section -->
         <div class="location-link-section">
             <div class="location-link-header">
                 <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1359,12 +1396,8 @@
     </div>
 
     <script>
-        // Menu Data - FIXED VERSION
-        const data = 
-
-// const updatedMenuItems =
-    
-  [
+        // Menu Data
+        const data =  [
   { "id": 1, "cat": "BREAKFAST", "name": "Tea / चहा", "price": "20.00 RS", "desc": "Hot cup of tea", "tags": ["Veg"], "img": "img/tea.jpg" },
   { "id": 2, "cat": "BREAKFAST", "name": "Coffee / कॉफी", "price": "25.00 RS", "desc": "Hot cup of coffee", "tags": ["Veg"], "img": "img/coffee.jpg" },
   { "id": 3, "cat": "BREAKFAST", "name": "Kandapoha / कांदेपोहे", "price": "50.00 RS", "desc": "Authentic Maharashtrian Kandapoha", "tags": ["Veg"], "img": "img/kandapoha.jpg" },
@@ -1732,9 +1765,48 @@
   { "id": 334, "cat": "CHINESE_NON_VEG_NOODLES", "name": "Egg Schezwan Noodles / एग शेजवान नूडल्स", "price": "200.00 RS", "desc": "Spicy Egg Schezwan Noodles", "tags": ["Non-Veg"], "img": "img/egg_schezwan_noodles.jpg" },
   { "id": 335, "cat": "CHINESE_NON_VEG_NOODLES", "name": "Chicken Malaysian Noodles / चिकन मलेशियन नूडल्स", "price": "299.00 RS", "desc": "Special Chicken Malaysian Noodles", "tags": ["Non-Veg"], "img": "img/chicken_malaysian_noodles.jpg" }
 ];   
+    
+
+        // Category definitions
+        const allCategories = [
+            { id: "all", name: "All", type: "both" },
+            { id: "BREAKFAST", name: "Breakfast", type: "mixed" },
+            { id: "VEG", name: "Veg", type: "veg" },
+            { id: "NON_VEG", name: "Non Veg", type: "nonveg" },
+            { id: "TANDOORI", name: "Tandoori", type: "nonveg" },
+            { id: "TANDOOR_STARTER_VEG", name: "Tandoor Starter Veg", type: "veg" },
+            { id: "KUCH_KHEEMA_HO_JAYE", name: "Kuch Kheema Ho Jaye", type: "mixed" },
+            { id: "EGG_ITEMS", name: "Egg Items", type: "nonveg" },
+            { id: "TANDOOR_STARTER_NON_VEG", name: "Tandoor Starter Non Veg", type: "nonveg" },
+            { id: "SOUP_VEG", name: "Soup Veg", type: "veg" },
+            { id: "STARTER_CHINESE_VEG", name: "Starter Chinese Veg", type: "veg" },
+            { id: "SOUP_NON_VEG", name: "Soup Non Veg", type: "nonveg" },
+            { id: "STARTER_CHINESE_NON_VEG", name: "Starter Chinese Non Veg", type: "nonveg" },
+            { id: "MUTTON_KA_KHAJANA", name: "Mutton Ka Khajana", type: "nonveg" },
+            { id: "FISH_KA_STARTER", name: "Fish Ka Starter", type: "nonveg" },
+            { id: "FISH_CURRY_MASALA", name: "Fish Curry Masala", type: "nonveg" },
+            { id: "THALI_KI_TARAF", name: "Thali Ki Taraf", type: "mixed" },
+            { id: "NON_VEG_GRAVY", name: "Non Veg Gravy", type: "nonveg" },
+            { id: "VEG_GRAVY", name: "Veg Gravy", type: "veg" },
+            { id: "ROTI_BASKET", name: "Roti Basket", type: "veg" },
+            { id: "WATER_COLD_DRINKS", name: "Water & Cold Drinks", type: "veg" },
+            { id: "KUCH_MEETHA_HO_JAYE", name: "Kuch Meetha Ho Jaye", type: "veg" },
+            { id: "BIRYANI_KA_SWAAD", name: "Biryani Ka Swaad", type: "veg" },
+            { id: "NON_VEG_BIRYANI", name: "Non Veg Biryani", type: "nonveg" },
+            { id: "DAL_KI_DUNIYA", name: "Dal Ki Duniya", type: "veg" },
+            { id: "RICE_ITEMS", name: "Rice Items", type: "veg" },
+            { id: "KHANE_KE_SATH", name: "Khane Ke Sath", type: "veg" },
+            { id: "CHINESE_VEG_RICE", name: "Chinese Veg Rice", type: "veg" },
+            { id: "CHINESE_VEG_NOODLES", name: "Chinese Veg Noodles", type: "veg" },
+            { id: "CHINESE_NON_VEG_RICE", name: "Chinese Non Veg Rice", type: "nonveg" },
+            { id: "CHINESE_NON_VEG_NOODLES", name: "Chinese Non Veg Noodles", type: "nonveg" }
+        ];
+
         // Cart functionality
         let cart = [];
-        let deliveryType = 'restaurant'; // Default to restaurant
+        let deliveryType = 'restaurant';
+        let currentVegFilter = null;
+        
         const cartButton = document.getElementById('cartButton');
         const cartModal = document.getElementById('cartModal');
         const closeCart = document.getElementById('closeCart');
@@ -1746,20 +1818,44 @@
         const whatsappOrder = document.getElementById('whatsappOrder');
         const addAnotherItem = document.getElementById('addAnotherItem');
         const customerDetailsSummary = document.getElementById('customerDetailsSummary');
+        const categoryTabsContainer = document.getElementById('categoryTabsContainer');
+        const categoryTabs = document.getElementById('categoryTabs');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        const menuGrid = document.getElementById('menuGrid');
+
+        // Render category tabs
+        function renderCategoryTabs(filterType = null) {
+            let categoriesToShow = allCategories;
+            
+            if (filterType === 'veg') {
+                categoriesToShow = allCategories.filter(cat => 
+                    cat.id === 'all' || cat.type === 'veg' || cat.type === 'mixed'
+                );
+            } else if (filterType === 'nonveg') {
+                categoriesToShow = allCategories.filter(cat => 
+                    cat.id === 'all' || cat.type === 'nonveg' || cat.type === 'mixed'
+                );
+            }
+            
+            let tabsHTML = '';
+            categoriesToShow.forEach(cat => {
+                const activeClass = cat.id === 'all' && !filterType ? 'active' : '';
+                tabsHTML += `<button class="tab ${activeClass}" data-cat="${cat.id}" onclick="filterByCategory('${cat.id}')">${cat.name}</button>`;
+            });
+            
+            categoryTabs.innerHTML = tabsHTML;
+        }
 
         // Delivery option selection
         function selectDeliveryOption(type) {
             deliveryType = type;
 
-            // Update button states
             document.getElementById('restaurantOption').classList.toggle('active', type === 'restaurant');
             document.getElementById('homeDeliveryOption').classList.toggle('active', type === 'home');
 
-            // Show/hide forms
             document.getElementById('restaurantForm').classList.toggle('active', type === 'restaurant');
             document.getElementById('homeDeliveryForm').classList.toggle('active', type === 'home');
 
-            // Update details summary
             updateCustomerDetailsSummary();
         }
 
@@ -1774,18 +1870,18 @@
                 if (tableNumber) {
                     showSummary = true;
                     summaryHTML = `
-            <div class="summary-title">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 12v12M15 12v12M5 12l-2 9h18l-2-9M5 12V8c0-1.105.895-2 2-2h10c1.105 0 2 .895 2 2v4"/>
-                <circle cx="12" cy="6" r="2"/>
-              </svg>
-              Restaurant Order
-            </div>
-            <div class="summary-details">
-              <div><strong>Type:</strong> Dine-in</div>
-              <div><strong>Table Number:</strong> ${tableNumber}</div>
-            </div>
-          `;
+                        <div class="summary-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 12v12M15 12v12M5 12l-2 9h18l-2-9M5 12V8c0-1.105.895-2 2-2h10c1.105 0 2 .895 2 2v4"/>
+                                <circle cx="12" cy="6" r="2"/>
+                            </svg>
+                            Restaurant Order
+                        </div>
+                        <div class="summary-details">
+                            <div><strong>Type:</strong> Dine-in</div>
+                            <div><strong>Table Number:</strong> ${tableNumber}</div>
+                        </div>
+                    `;
                 }
             } else {
                 const name = document.getElementById('customerName').value.trim();
@@ -1795,19 +1891,19 @@
                 if (name || mobile || address) {
                     showSummary = true;
                     summaryHTML = `
-            <div class="summary-title">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-              </svg>
-              Delivery Order
-            </div>
-            <div class="summary-details">
-              <div><strong>Type:</strong> Home Delivery</div>
-              ${name ? `<div><strong>Name:</strong> ${name}</div>` : ''}
-              ${mobile ? `<div><strong>Mobile:</strong> ${mobile}</div>` : ''}
-              ${address ? `<div><strong>Address:</strong> ${address}</div>` : ''}
-            </div>
-          `;
+                        <div class="summary-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                            </svg>
+                            Delivery Order
+                        </div>
+                        <div class="summary-details">
+                            <div><strong>Type:</strong> Home Delivery</div>
+                            ${name ? `<div><strong>Name:</strong> ${name}</div>` : ''}
+                            ${mobile ? `<div><strong>Mobile:</strong> ${mobile}</div>` : ''}
+                            ${address ? `<div><strong>Address:</strong> ${address}</div>` : ''}
+                        </div>
+                    `;
                 }
             }
 
@@ -1846,7 +1942,6 @@
 
             updateCart();
 
-            // Animation effect
             button.classList.add('adding');
             button.innerHTML = 'Adding...';
 
@@ -1885,11 +1980,9 @@
 
         // Update cart display
         function updateCart() {
-            // Update cart count
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalItems;
 
-            // Update cart items
             if (cart.length === 0) {
                 cartEmpty.style.display = 'block';
                 cartItems.innerHTML = '';
@@ -1900,24 +1993,30 @@
                 let totalAmount = 0;
 
                 cart.forEach(item => {
-                    const price = parseInt(item.price.replace('₹', ''));
-                    const itemTotal = price * item.quantity;
+                    let priceValue = 0;
+                    if (item.price.includes('-')) {
+                        priceValue = parseInt(item.price.split('-')[0].replace('₹', '').trim());
+                    } else {
+                        priceValue = parseInt(item.price.replace('₹', ''));
+                    }
+                    
+                    const itemTotal = priceValue * item.quantity;
                     totalAmount += itemTotal;
 
                     itemsHTML += `
-            <div class="cart-item">
-              <div class="item-info">
-                <div class="item-name">${item.name}</div>
-                <div class="item-price">${item.price}</div>
-              </div>
-              <div class="item-quantity">
-                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
-                <span class="quantity">${item.quantity}</span>
-                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
-                <button class="remove-item" onclick="removeFromCart(${item.id})">×</button>
-              </div>
-            </div>
-          `;
+                        <div class="cart-item">
+                            <div class="item-info">
+                                <div class="item-name">${item.name}</div>
+                                <div class="item-price">${item.price}</div>
+                            </div>
+                            <div class="item-quantity">
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <span class="quantity">${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                                <button class="remove-item" onclick="removeFromCart(${item.id})">×</button>
+                            </div>
+                        </div>
+                    `;
                 });
 
                 cartItems.innerHTML = itemsHTML;
@@ -1935,13 +2034,11 @@
         addAnotherItem.addEventListener('click', () => {
             cartModal.classList.remove('open');
             
-            // Scroll to top of menu
             window.scrollTo({
                 top: document.querySelector('.menu-head').offsetTop - 20,
                 behavior: 'smooth'
             });
             
-            // Focus on search to help user find items
             setTimeout(() => {
                 document.getElementById('search').focus();
             }, 500);
@@ -1954,7 +2051,6 @@
                 return;
             }
 
-            // Validate details based on delivery type
             let validationPassed = true;
             let validationMessage = '';
 
@@ -1983,7 +2079,6 @@
 
             let message = `Hello! I would like to place an order:\n\n`;
 
-            // Add delivery details
             if (deliveryType === 'restaurant') {
                 const tableNumber = document.getElementById('tableNumber').value.trim();
 
@@ -2006,26 +2101,77 @@
                 message += `• ${item.name} - ${item.quantity} x ${item.price}\n`;
             });
 
-            const totalAmount = cart.reduce((sum, item) => {
-                const price = parseInt(item.price.replace('₹', ''));
-                return sum + (price * item.quantity);
-            }, 0);
+            let totalAmount = 0;
+            cart.forEach(item => {
+                let priceValue = 0;
+                if (item.price.includes('-')) {
+                    priceValue = parseInt(item.price.split('-')[0].replace('₹', '').trim());
+                } else {
+                    priceValue = parseInt(item.price.replace('₹', ''));
+                }
+                totalAmount += priceValue * item.quantity;
+            });
 
             message += `\n**Total Amount:** ₹${totalAmount}\n\n`;
             message += `Thank you!`;
 
-            // Encode the message for WhatsApp URL
             const encodedMessage = encodeURIComponent(message);
             const whatsappURL = `https://wa.me/919960465169?text=${encodedMessage}`;
 
-            // Open WhatsApp in a new tab
             window.open(whatsappURL, '_blank');
 
-            // Close cart modal after order
             setTimeout(() => {
                 cartModal.classList.remove('open');
             }, 1000);
         });
+
+        // Filter by veg/non-veg (updates both category buttons and menu items)
+        function filterByVegNonVeg(type) {
+            currentVegFilter = type;
+            
+            document.getElementById('vegBtn').classList.toggle('active', type === 'veg');
+            document.getElementById('nonVegBtn').classList.toggle('active', type === 'nonveg');
+            document.getElementById('resetFilterBtn').style.display = 'inline-flex';
+            
+            // Hide welcome message, show category tabs and menu
+            welcomeMessage.style.display = 'none';
+            categoryTabsContainer.classList.add('visible');
+            menuGrid.style.display = 'grid';
+            
+            // Update category tabs based on filter
+            renderCategoryTabs(type);
+            
+            // Filter menu items based on type
+            let filteredItems;
+            if (type === 'veg') {
+                filteredItems = data.filter(item => 
+                    item.tags.includes('Veg')
+                );
+            } else {
+                filteredItems = data.filter(item => 
+                    item.tags.includes('Non-Veg')
+                );
+            }
+            
+            renderMenuItems(filteredItems);
+            
+            // Reset active tab
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        }
+
+        // Reset veg/non-veg filter
+        function resetVegNonVegFilter() {
+            currentVegFilter = null;
+            
+            document.getElementById('vegBtn').classList.remove('active');
+            document.getElementById('nonVegBtn').classList.remove('active');
+            document.getElementById('resetFilterBtn').style.display = 'none';
+            
+            // Hide category tabs and menu, show welcome message
+            welcomeMessage.style.display = 'block';
+            categoryTabsContainer.classList.remove('visible');
+            menuGrid.style.display = 'none';
+        }
 
         // Render menu items
         function renderMenuItems(items) {
@@ -2037,40 +2183,83 @@
             }
 
             menuGrid.innerHTML = items.map(item => `
-        <div class="card" data-cat="${item.cat}">
-          <div class="card-header">
-            <div class="thumb">
-              <img src="${item.img}" alt="${item.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDMpIi8+CjxwYXRoIGQ9Ik03MCA4MEgxMTBNODAgNzBWOTBNNjUgOTVIMTA1TTk1IDY1VjEwNU02NSA2NVYxMDVNNzUgNzVIOThNNzUgODVIOThNNzUgOTVIOThNNzUgMTA1SDk4TTY1IDc1SDcyTTY1IDg1SDcyTTY1IDk1SDcyTTY1IDEwNUg3Mk0xMDggNzVIMTE1TTEwOCA4NUgxMTVNMTA4IDk1SDExNU0xMDggMTA1SDExNSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+'">
-            </div>
-            <div class="card-info">
-              <h3 class="dish">${item.name}</h3>
-              <p class="desc">${item.desc}</p>
-              <div class="tags">
-                ${item.tags.map(tag => `<span class="pill">${tag}</span>`).join('')}
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="price">${item.price}</div>
-            <button class="btn-primary" onclick="addToCart(${JSON.stringify(item).replace(/"/g, '&quot;')}, this)">Add to Cart</button>
-          </div>
-        </div>
-      `).join('');
+                <div class="card" data-cat="${item.cat}">
+                    <div class="card-header">
+                        <div class="thumb">
+                            <img src="${item.img}" alt="${item.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDMpIi8+CjxwYXRoIGQ9Ik03MCA4MEgxMTBNODAgNzBWOTBNNjUgOTVIMTA1TTk1IDY1VjEwNU02NSA2NVYxMDVNNzUgNzVIOThNNzUgODVIOThNNzUgOTVIOThNNzUgMTA1SDk4TTY1IDc1SDcyTTY1IDg1SDcyTTY1IDk1SDcyTTY1IDEwNUg3Mk0xMDggNzVIMTE1TTEwOCA4NUgxMTVNMTA4IDk1SDExNU0xMDggMTA1SDExNSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+'">
+                        </div>
+                        <div class="card-info">
+                            <h3 class="dish">${item.name}</h3>
+                            <p class="desc">${item.desc}</p>
+                            <div class="tags">
+                                ${item.tags.map(tag => `<span class="pill">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="price">${item.price}</div>
+                        <button class="btn-primary" onclick="addToCart(${JSON.stringify(item).replace(/"/g, '&quot;')}, this)">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
         }
 
         // Filter menu items by category
         function filterByCategory(category) {
-            if (category === 'all') {
-                renderMenuItems(data);
+            // If we're in veg/non-veg filter mode, also filter by category
+            if (currentVegFilter) {
+                let filteredByTag;
+                if (currentVegFilter === 'veg') {
+                    filteredByTag = data.filter(item => item.tags.includes('Veg'));
+                } else {
+                    filteredByTag = data.filter(item => item.tags.includes('Non-Veg'));
+                }
+                
+                if (category === 'all') {
+                    renderMenuItems(filteredByTag);
+                } else {
+                    const filteredItems = filteredByTag.filter(item => item.cat === category);
+                    renderMenuItems(filteredItems);
+                }
             } else {
-                const filteredItems = data.filter(item => item.cat === category);
-                renderMenuItems(filteredItems);
+                // Normal mode - no veg/non-veg filter
+                if (category === 'all') {
+                    renderMenuItems(data);
+                } else {
+                    const filteredItems = data.filter(item => item.cat === category);
+                    renderMenuItems(filteredItems);
+                }
             }
+            
+            // Update active tab
+            document.querySelectorAll('.tab').forEach(t => {
+                if (t.dataset.cat === category) {
+                    t.classList.add('active');
+                } else {
+                    t.classList.remove('active');
+                }
+            });
         }
 
         // Search functionality
         function searchItems(query) {
-            const filteredItems = data.filter(item =>
+            if (!currentVegFilter) {
+                return; // Don't search if no filter is selected
+            }
+            
+            if (query.trim() === '') {
+                filterByVegNonVeg(currentVegFilter);
+                return;
+            }
+            
+            let itemsToSearch = data;
+            if (currentVegFilter === 'veg') {
+                itemsToSearch = data.filter(item => item.tags.includes('Veg'));
+            } else if (currentVegFilter === 'nonveg') {
+                itemsToSearch = data.filter(item => item.tags.includes('Non-Veg'));
+            }
+            
+            const filteredItems = itemsToSearch.filter(item =>
                 item.name.toLowerCase().includes(query.toLowerCase()) ||
                 item.desc.toLowerCase().includes(query.toLowerCase()) ||
                 item.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
@@ -2080,27 +2269,17 @@
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            // Set default delivery option
             selectDeliveryOption('restaurant');
+            
+            // Show welcome message, hide category tabs and menu
+            welcomeMessage.style.display = 'block';
+            categoryTabsContainer.classList.remove('visible');
+            menuGrid.style.display = 'none';
 
-            // Render menu items
-            renderMenuItems(data);
-
-            // Tab functionality
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.addEventListener('click', () => {
-                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    filterByCategory(tab.dataset.cat);
-                });
-            });
-
-            // Search functionality
             document.getElementById('search').addEventListener('input', (e) => {
                 searchItems(e.target.value);
             });
 
-            // Update details summary when form inputs change
             document.getElementById('tableNumber').addEventListener('input', updateCustomerDetailsSummary);
             document.getElementById('customerName').addEventListener('input', updateCustomerDetailsSummary);
             document.getElementById('customerMobile').addEventListener('input', updateCustomerDetailsSummary);
@@ -2112,6 +2291,9 @@
         window.removeFromCart = removeFromCart;
         window.updateQuantity = updateQuantity;
         window.selectDeliveryOption = selectDeliveryOption;
+        window.filterByVegNonVeg = filterByVegNonVeg;
+        window.resetVegNonVegFilter = resetVegNonVegFilter;
+        window.filterByCategory = filterByCategory;
     </script>
 </body>
 
